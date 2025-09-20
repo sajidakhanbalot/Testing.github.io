@@ -1,143 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sajida Khan Portfolio</title>
-    <link rel="stylesheet" href="/dist/output.css">
-    <script type="module" src="/main.js"></script>
+  <title>Catch the Falling Stars</title>
+  <style>
+    canvas {
+      background-color: black;
+      display: block;
+      margin: 0 auto;
+    }
+    body {
+      text-align: center;
+      font-family: sans-serif;
+      color: white;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white font-sans transition-colors duration-300" id="theme-body">
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle" class="fixed top-4 right-4 z-50 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700">
-        <svg id="theme-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-    </button>
+<body>
+  <h1>🌟 Catch the Falling Stars!</h1>
+  <p>Move with Arrow Keys ← →</p>
+  <canvas id="gameCanvas" width="600" height="400"></canvas>
 
-    <!-- Navigation -->
-    <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold neon-text">Sajida Khan</h1>
-            <ul class="flex space-x-6">
-                <li><a href="#about" class="text-gray-300 hover:text-neon-blue">About</a></li>
-                <li><a href="#projects" class="text-gray-300 hover:text-neon-blue">Projects</a></li>
-                <li><a href="#blogs" class="text-gray-300 hover:text-neon-blue">Blogs</a></li>
-                <li><a href="#courses" class="text-gray-300 hover:text-neon-blue">Courses</a></li>
-                <li><a href="#contact" class="text-gray-300 hover:text-neon-blue">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
 
-    <!-- Hero Section with 3D Canvas -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <canvas id="three-canvas" class="absolute inset-0 z-0"></canvas>
-        <div class="text-center max-w-4xl mx-auto px-4 z-10">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 animate-pulse">Sajida Khan</h1>
-            <p class="text-xl md:text-2xl mb-6">AI Innovator | Web Developer | Game Creator</p>
-            <a href="#contact" class="bg-neon-blue text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-neon-blue/80">Let's Collaborate</a>
-        </div>
-    </section>
+    const basket = {
+      x: 270,
+      y: 350,
+      width: 60,
+      height: 20,
+      speed: 7
+    };
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sajida Khan" class="w-64 h-64 rounded-full object-cover shadow-lg">
-            <div>
-                <h2 class="text-3xl font-bold mb-6 neon-text">About Me</h2>
-                <p class="text-lg text-gray-300 leading-relaxed">
-                    I'm Sajida Khan, a passionate innovator with over 14 years of experience in AI, web development, and game design. As a former Child Trainer at IITFA Faridabad (2014-2017), I empowered young minds with coding skills through interactive workshops. My expertise spans creating advanced chatbots, immersive games, and modern websites, blending creativity with cutting-edge technology.
-                </p>
-            </div>
-        </div>
-    </section>
+    const stars = [];
+    let score = 0;
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-10 neon-text">My Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform">
-                    <img src="https://images.unsplash.com/photo-1516321310764-4791c5f7a10f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chatbot" class="w-full h-48 object-cover rounded-t-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Advanced Chatbot</h3>
-                    <p class="text-gray-300 mb-4">An AI-powered chatbot with natural language processing, built using Python and TensorFlow.</p>
-                    <a href="#" class="text-neon-blue hover:underline">View Project</a>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform">
-                    <img src="https://images.unsplash.com/photo-1541516160071-4bb0c5a6a3de?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Game" class="w-full h-48 object-cover rounded-t-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Flappy Bird Clone</h3>
-                    <p class="text-gray-300 mb-4">A fun, responsive game built with Python and Pygame, featuring smooth animations.</p>
-                    <a href="#" class="text-neon-blue hover:underline">View Project</a>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Website" class="w-full h-48 object-cover rounded-t-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">E-Commerce Website</h3>
-                    <p class="text-gray-300 mb-4">A responsive Amazon-like website using React and Tailwind CSS.</p>
-                    <a href="#" class="text-neon-blue hover:underline">View Project</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    function createStar() {
+      stars.push({
+        x: Math.random() * 550,
+        y: 0,
+        radius: 10,
+        speed: 3 + Math.random() * 2
+      });
+    }
 
-    <!-- Blogs Section -->
-    <section id="blogs" class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-10 neon-text">My Blogs</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-gray-900 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold mb-2">The Future of AI in Web Development</h3>
-                    <p class="text-gray-300 mb-4">Exploring how AI is transforming the way we build websites, from design to deployment.</p>
-                    <a href="#" class="text-neon-blue hover:underline">Read More</a>
-                </div>
-                <div class="bg-gray-900 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold mb-2">Building Games with Python</h3>
-                    <p class="text-gray-300 mb-4">A beginner’s guide to creating engaging games using Pygame and Python.</p>
-                    <a href="#" class="text-neon-blue hover:underline">Read More</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    function drawBasket() {
+      ctx.fillStyle = 'orange';
+      ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
+    }
 
-    <!-- Courses Section -->
-    <section id="courses" class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-10 neon-text">My Courses</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform">
-                    <h3 class="text-xl font-semibold mb-2">AI for Beginners</h3>
-                    <p class="text-gray-300 mb-4">Learn the basics of artificial intelligence and build your first model.</p>
-                    <a href="#" class="text-neon-blue hover:underline">Enroll Now</a>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform">
-                    <h3 class="text-xl font-semibold mb-2">Web Development Mastery</h3>
-                    <p class="text-gray-300 mb-4">Master HTML, CSS, JavaScript, and React to build modern websites.</p>
-                    <a href="#" class="text-neon-blue hover:underline">Enroll Now</a>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform">
-                    <h3 class="text-xl font-semibold mb-2">Game Development with Python</h3>
-                    <p class="text-gray-300 mb-4">Create your own games using Python and Pygame, from concept to code.</p>
-                    <a href="#" class="text-neon-blue hover:underline">Enroll Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    function drawStar(star) {
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'yellow';
+      ctx.fill();
+    }
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6 neon-text">Get in Touch</h2>
-            <p class="text-lg text-gray-300 mb-6">Ready to collaborate or learn more? Reach out today!</p>
-            <div class="flex justify-center space-x-6">
-                <a href="mailto:sajida.khan@example.com" class="text-neon-blue hover:text-neon-blue/80">Email</a>
-                <a href="https://linkedin.com/in/sajidakhan" target="_blank" class="text-neon-blue hover:text-neon-blue/80">LinkedIn</a>
-                <a href="https://github.com/sajidakhan" target="_blank" class="text-neon-blue hover:text-neon-blue/80">GitHub</a>
-            </div>
-        </div>
-    </section>
+    function updateStars() {
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        s.y += s.speed;
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-6">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p>© 2025 Sajida Khan. All rights reserved.</p>
-        </div>
-    </footer>
+        // Check if caught
+        if (
+          s.y + s.radius > basket.y &&
+          s.x > basket.x &&
+          s.x < basket.x + basket.width
+        ) {
+          stars.splice(i, 1);
+          score++;
+        }
+
+        // Remove if missed
+        else if (s.y > canvas.height) {
+          stars.splice(i, 1);
+        }
+      }
+    }
+
+    function drawScore() {
+      ctx.fillStyle = 'white';
+      ctx.font = '18px Arial';
+      ctx.fillText('Score: ' + score, 10, 20);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBasket();
+      stars.forEach(drawStar);
+      drawScore();
+    }
+
+    function update() {
+      updateStars();
+    }
+
+    function gameLoop() {
+      update();
+      draw();
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Movement
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') {
+        basket.x -= basket.speed;
+      } else if (e.key === 'ArrowRight') {
+        basket.x += basket.speed;
+      }
+    });
+
+    // Start game
+    setInterval(createStar, 800); // Add a new star every 800ms
+    gameLoop();
+  </script>
+</body>
+</html>
+
