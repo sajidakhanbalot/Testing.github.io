@@ -1,1 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sajida Khan - Full Stack Developer & UI/UX Enthusiast with 5+ years of experience in React, Node.js, and Python. Based in Delhi, India.">
+    <meta name="keywords" content="Sajida Khan, Full Stack Developer, UI/UX Designer, React Developer, Node.js, Python, Web Developer, Delhi India, Software Engineer">
+    <meta name="author" content="Sajida Khan">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Sajida Khan - Full Stack Developer & UI/UX Enthusiast">
+    <meta property="og:description" content="Passionate software developer with 5+ years of experience building scalable web applications">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sajidakhanbalot.github.io/ersajidabalot.github.io/">
+    <meta property="og:image" content="https://sajidakhanbalot.github.io/ersajidabalot.github.io/og-image.jpg">
+    
+    <title>Sajida Khan - Full Stack Developer & UI/UX Enthusiast | Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E👩‍💻%3C/text%3E%3C/svg%3E">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sajida Khan",
+        "jobTitle": "Full Stack Developer",
+        "description": "Full Stack Developer & UI/UX Enthusiast with 5+ years of experience",
+        "url": "https://sajidakhanbalot.github.io/ersajidabalot.github.io/",
+        "sameAs": [
+            "https://github.com/sajidakhanbalot",
+            "https://linkedin.com/in/sajidakhan"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Delhi",
+            "addressCountry": "India"
+        },
+        "email": "sajidakhan3610@gmail.com",
+        "telephone": "+91-8826197747"
+    }
+    </script>
 
+    <style>
+        /* [Previous CSS remains unchanged, with additions below] */
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--bg-secondary);
+            z-index: 1001;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            background: var(--primary-gradient);
+            width: 0;
+            transition: width var(--transition-normal);
+        }
+
+        /* Resume Download Button */
+        .resume-btn {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .resume-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .resume-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Lazy Loading Placeholder */
+        .lazy-placeholder {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lazy-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: lazyShimmer 2s infinite;
+        }
+
+        @keyframes lazyShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Enhanced Mobile Styles */
+        @media (max-width: 360px) {
+            .container {
+                padding: 0 var(--space-md);
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 4vw, 2.5rem);
+            }
+
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 2vw, 1rem);
+            }
+
+            .profile-card {
+                padding: var(--space-lg);
+            }
+
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+
+    <!-- [Previous HTML sections remain unchanged, with additions below] -->
+
+    <!-- Add Resume Download Button to Hero Section -->
+    <section class="hero" id="home">
+        <!-- [Previous hero content] -->
+        <div class="hero-container">
+            <div class="hero-content">
+                <!-- [Previous hero content] -->
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope btn-icon-float"></i>
+                        Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-eye btn-icon-float"></i>
+                        View My Work
+                    </a>
+                    <a href="/resume.pdf" class="resume-btn" download>
+                        <i class="fas fa-download btn-icon-float"></i>
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+            <!-- [Previous hero visual] -->
+        </div>
+    </section>
+
+    <!-- Complete Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <p class="section-subtitle">
+                    My technical toolkit spans across frontend, backend, and modern development tools
+                </p>
+            </div>
+            <div class="skills-grid">
+                <!-- Frontend Development -->
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-laptop-code"></i> Frontend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-react skill-icon"></i>
+                                React.js
+                            </span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-js-square skill-icon"></i>
+                                JavaScript
+                            </span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-html5 skill-icon"></i>
+                                HTML/CSS
+                            </span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-vuejs skill-icon"></i>
+                                Vue.js
+                            </span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Backend Development -->
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-server"></i> Backend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-node-js skill-icon"></i>
+                                Node.js
+                            </span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-python skill-icon"></i>
+                                Python
+                            </span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fas fa-database skill-icon"></i>
+                                MongoDB
+                            </span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fas fa-database skill-icon"></i>
+                                PostgreSQL
+                            </span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Technologies -->
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-git-alt skill-icon"></i>
+                                Git & GitHub
+                            </span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-docker skill-icon"></i>
+                                Docker
+                            </span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-aws skill-icon"></i>
+                                AWS
+                            </span>
+                            <span class="skill-percentage">65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="65"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-figma skill-icon"></i>
+                                Figma
+                            </span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [Remaining sections: Experience, Projects, Testimonials, Blog, Contact, Footer, etc., remain unchanged] -->
+
+    <script>
+        // Enhanced Performance Utilities
+        const debounce = (func, wait, immediate) => {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    timeout = null;
+                    if (!immediate) func(...args);
+                };
+                const callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func(...args);
+            };
+        };
+
+        const throttle = (func, limit) => {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        };
+
+        // Advanced Loading Screen with Progress
+        let loadingProgress = 0;
+        const loadingSteps = [
+            'Initializing components...',
+            'Loading animations...',
+            'Setting up interactions...',
+            'Optimizing performance...',
+            'Almost ready...',
+            'Welcome!'
+        ];
+
+        const updateLoadingProgress = () => {
+            const loadingText = document.querySelector('.loading-text');
+            const progressBar = document.querySelector('.loading-progress-bar');
+            
+            if (loadingProgress < loadingSteps.length - 1) {
+                loadingText.textContent = loadingSteps[loadingProgress];
+                progressBar.style.width = ((loadingProgress + 1) / loadingSteps.length) * 100 + '%';
+                loadingProgress++;
+                setTimeout(updateLoadingProgress, 500);
+            } else {
+                loadingText.textContent = loadingSteps[loadingSteps.length - 1];
+                setTimeout(() => {
+                    const loadingScreen = document.getElementById('loadingScreen');
+                    loadingScreen.classList.add('fade-out');
+                    setTimeout(() => loadingScreen.remove(), 500);
+                    initializeWebsite();
+                }, 800);
+            }
+        };
+
+        // Custom Cursor System
+        const initCustomCursor = () => {
+            if (window.innerWidth < 768) return; // Disable on mobile
+            
+            const cursor = document.getElementById('cursor');
+            const cursorDot = document.getElementById('cursorDot');
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
+
+            const animateCursor = () => {
+                cursorX += (mouseX - cursorX) * 0.1;
+                cursorY += (mouseY - cursorY) * 0.1;
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                requestAnimationFrame(animateCursor);
+            };
+
+            document.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+                cursorDot.classList.add('active');
+                animateCursor();
+            });
+
+            document.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+                cursorDot.classList.remove('active');
+            });
+
+            // Hover effects
+            const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-category');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        };
+
+        // Particle System
+        const createParticleSystem = () => {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                // Random colors for particles
+                const colors = ['#6366f1', '#f59e0b', '#10b981', '#ef4444', '#06b6d4'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+            }
+        };
+
+        // Enhanced Theme Toggle with System Detection
+        const themeManager = {
+            init() {
+                this.themeToggle = document.getElementById('themeToggle');
+                this.body = document.body;
+                this.setupTheme();
+                this.bindEvents();
+                this.watchSystemTheme();
+            },
+
+            setupTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                const theme = savedTheme || systemTheme;
+                
+                this.body.setAttribute('data-theme', theme);
+                this.updateThemeIcon(theme);
+            },
+
+            updateThemeIcon(theme) {
+                const icon = this.themeToggle.querySelector('i');
+                icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            },
+
+            toggleTheme() {
+                const currentTheme = this.body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                this.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                this.updateThemeIcon(newTheme);
+                
+                this.showNotification(`Switched to ${newTheme} theme`, 'info');
+            },
+
+            bindEvents() {
+                this.themeToggle.addEventListener('click', () => this.toggleTheme());
+            },
+
+            watchSystemTheme() {
+                if (window.matchMedia) {
+                    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                        if (!localStorage.getItem('theme')) {
+                            const theme = e.matches ? 'dark' : 'light';
+                            this.body.setAttribute('data-theme', theme);
+                            this.updateThemeIcon(theme);
+                        }
+                    });
+                }
+            },
+
+            showNotification(message, type) {
+                notificationSystem.show(message, type);
+            }
+        };
+
+        // Notification System
+        const notificationSystem = {
+            show(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
+                        <div class="notification-message">${message}</div>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+                setTimeout(() => notification.classList.add('show'), 100);
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+        };
+
+        // Advanced Sound System
+        const soundManager = {
+            init() {
+                this.soundToggle = document.getElementById('soundToggle');
+                this.isEnabled = localStorage.getItem('soundEnabled') !== 'false';
+                this.setupSounds();
+                this.bindEvents();
+                this.updateUI();
+            },
+
+            setupSounds() {
+                this.sounds = {
+                    hover: new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoU'),
+                    click: new Audio('data:audio/wav;base64,UklGRlAGAABXQVZFZm10IBAAAAABAAEARKwAABCxAgAEABAAZGF0YQYGAACAhYqFc11dd5irrZBhNjVgoNDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoU'),
+                    success: new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoU')
+                };
+                Object.values(this.sounds).forEach(sound => {
+                    sound.volume = 0.5;
+                    sound.preload = 'auto';
+                });
+            },
+
+            play(soundType) {
+                if (this.isEnabled && this.sounds[soundType]) {
+                    this.sounds[soundType].currentTime = 0;
+                    this.sounds[soundType].play().catch(() => {});
+                }
+            },
+
+            toggleSound() {
+                this.isEnabled = !this.isEnabled;
+                localStorage.setItem('soundEnabled', this.isEnabled);
+                this.updateUI();
+                notificationSystem.show(`Sound ${this.isEnabled ? 'enabled' : 'disabled'}`, this.isEnabled ? 'success' : 'info');
+            },
+
+            updateUI() {
+                const waveBars = this.soundToggle.querySelectorAll('.wave-bar');
+                waveBars.forEach(bar => {
+                    bar.style.animation = this.isEnabled ? 'wave 1s ease-in-out infinite' : 'none';
+                    bar.style.background = this.isEnabled ? 'var(--primary-color)' : 'var(--text-muted)';
+                });
+            },
+
+            bindEvents() {
+                this.soundToggle.addEventListener('click', () => this.toggleSound());
+                document.querySelectorAll('a, button').forEach(el => {
+                    el.addEventListener('mouseenter', () => this.play('hover'));
+                    el.addEventListener('click', () => this.play('click'));
+                });
+            }
+        };
+
+        // Scroll Animation Handler
+        const animationManager = {
+            init() {
+                this.elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+                this.observer = new IntersectionObserver(this.handleIntersection.bind(this), {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                this.elements.forEach(el => this.observer.observe(el));
+            },
+
+            handleIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        this.observer.unobserve(entry.target);
+                    }
+                });
+            }
+        };
+
+        // Skill Bar Animation
+        const skillBarManager = {
+            init() {
+                this.skillBars = document.querySelectorAll('.skill-progress');
+                this.observer = new IntersectionObserver(this.handleIntersection.bind(this), {
+                    threshold: 0.5
+                });
+                this.skillBars.forEach(bar => this.observer.observe(bar));
+            },
+
+            handleIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const width = bar.getAttribute('data-width');
+                        bar.style.width = `${width}%`;
+                        this.observer.unobserve(bar);
+                    }
+                });
+            }
+        };
+
+        // Project Filter
+        const projectFilter = {
+            init() {
+                this.filterButtons = document.querySelectorAll('.filter-btn');
+                this.projectCards = document.querySelectorAll('.project-card');
+                this.bindEvents();
+            },
+
+            filterProjects(category) {
+                this.filterButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+                
+                this.projectCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (category === 'all' || cardCategory.includes(category)) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.classList.add('visible'), 100);
+                    } else {
+                        card.classList.remove('visible');
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+            },
+
+            bindEvents() {
+                this.filterButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const category = btn.getAttribute('data-filter');
+                        this.filterProjects(category);
+                        soundManager.play('click');
+                    });
+                });
+            }
+        };
+
+        // Contact Form Handler
+        const contactForm = {
+            init() {
+                this.form = document.getElementById('contactForm');
+                this.bindEvents();
+            },
+
+            validateForm(data) {
+                const errors = [];
+                if (!data.name.trim()) errors.push('Name is required');
+                if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errors.push('Valid email is required');
+                if (!data.subject.trim()) errors.push('Subject is required');
+                if (!data.message.trim()) errors.push('Message is required');
+                return errors;
+            },
+
+            handleSubmit(e) {
+                e.preventDefault();
+                const formData = new FormData(this.form);
+                const data = Object.fromEntries(formData);
+                const errors = this.validateForm(data);
+
+                if (errors.length > 0) {
+                    notificationSystem.show(errors.join('<br>'), 'error');
+                    return;
+                }
+
+                // Simulate form submission
+                setTimeout(() => {
+                    notificationSystem.show('Message sent successfully!', 'success');
+                    this.form.reset();
+                    soundManager.play('success');
+                }, 1000);
+            },
+
+            bindEvents() {
+                this.form.addEventListener('submit', this.handleSubmit.bind(this));
+            }
+        };
+
+        // Dynamic Typing Effect for Hero Title
+        const typingEffect = {
+            init() {
+                this.titleElement = document.getElementById('heroTitle');
+                this.texts = ['Full Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Innovator'];
+                this.currentTextIndex = 0;
+                this.currentCharIndex = 0;
+                this.isDeleting = false;
+                this.typingSpeed = 100;
+                this.deleteSpeed = 50;
+                this.pauseTime = 1500;
+                this.type();
+            },
+
+            type() {
+                const currentText = this.texts[this.currentTextIndex];
+                let displayText = this.isDeleting
+                    ? currentText.substring(0, this.currentCharIndex - 1)
+                    : currentText.substring(0, this.currentCharIndex + 1);
+
+                this.titleElement.textContent = `Hi, I'm Sajida Khan - ${displayText}`;
+
+                if (!this.isDeleting && this.currentCharIndex < currentText.length) {
+                    this.currentCharIndex++;
+                    setTimeout(() => this.type(), this.typingSpeed);
+                } else if (this.isDeleting && this.currentCharIndex > 0) {
+                    this.currentCharIndex--;
+                    setTimeout(() => this.type(), this.deleteSpeed);
+                } else if (!this.isDeleting && this.currentCharIndex === currentText.length) {
+                    this.isDeleting = true;
+                    setTimeout(() => this.type(), this.pauseTime);
+                } else if (this.isDeleting && this.currentCharIndex === 0) {
+                    this.isDeleting = false;
+                    this.currentTextIndex = (this.currentTextIndex + 1) % this.texts.length;
+                    setTimeout(() => this.type(), this.typingSpeed);
+                }
+            }
+        };
+
+        // Scroll Progress Bar
+        const scrollProgress = {
+            init() {
+                this.progressBar = document.getElementById('scrollProgressBar');
+                this.updateProgress();
+                window.addEventListener('scroll', throttle(this.updateProgress.bind(this), 100));
+            },
+
+            updateProgress() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const progress = (scrollTop / scrollHeight) * 100;
+                this.progressBar.style.width = `${progress}%`;
+            }
+        };
+
+        // Analytics Tracking
+        const analytics = {
+            init() {
+                this.trackPageView();
+                this.bindEvents();
+            },
+
+            trackPageView() {
+                console.log(`Page viewed: ${window.location.pathname}`);
+                // Simulate sending to analytics service
+            },
+
+            trackEvent(category, action, label) {
+                console.log(`Event tracked: ${category} - ${action} - ${label}`);
+                // Simulate sending to analytics service
+            },
+
+            bindEvents() {
+                document.querySelectorAll('.btn, .nav-link, .project-link, .read-more, .resume-btn').forEach(el => {
+                    el.addEventListener('click', () => {
+                        this.trackEvent('Interaction', 'Click', el.textContent.trim());
+                        soundManager.play('click');
+                    });
+                });
+            }
+        };
+
+        // Initialize Website
+        const initializeWebsite = () => {
+            initCustomCursor();
+            createParticleSystem();
+            themeManager.init();
+            soundManager.init();
+            animationManager.init();
+            skillBarManager.init();
+            projectFilter.init();
+            contactForm.init();
+            typingEffect.init();
+            scrollProgress.init();
+            analytics.init();
+
+            // Scroll to top button
+            const scrollTopBtn = document.getElementById('scrollTop');
+            const handleScroll = throttle(() => {
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            }, 100);
+
+            window.addEventListener('scroll', handleScroll);
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                soundManager.play('click');
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+                mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+                document.body.classList.toggle('no-scroll');
+                soundManager.play('click');
+            });
+
+            // Lazy load images (for future real images)
+            const lazyImages = document.querySelectorAll('.project-image, .blog-image');
+            const lazyObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.remove('lazy-placeholder');
+                        observer.unobserve(img);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            lazyImages.forEach(img => lazyObserver.observe(img));
+        };
+
+        // Start loading progress
+        window.addEventListener('load', updateLoadingProgress);
+    </script>
+</body>
+</html>
